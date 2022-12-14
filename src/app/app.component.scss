@@ -1,0 +1,34 @@
+:host {
+    .view-container {
+        min-height: 100vh;
+        .header {
+            color: white;
+            min-height: 100px;
+            background-color: #272643;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .input {
+                width: 30%;
+                height: 2.2rem;
+            }
+        }
+        .view-body {
+            min-height: calc(100vh - 200px);
+            background-color: #12111fdc;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .footer {
+            min-height: 100px;
+            background-color: #272643;
+        }
+    }
+}
+
+::ng-deep router-outlet + *{
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: calc(100vh - 201px);
+}

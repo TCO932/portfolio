@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import './assets/font/stylesheet.css';
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+* {
+    font-family: 'Gilroy';
+    color: white;
+}
+
+:root {
+    --main-color: #272643;
+    --main-color-light: #494870;
+    --main-color-dark: #1a1a2c;
+    --main-background-color: #12111fdc;
+}
+
+
+.mdc-button {
+    &:hover:not(.underlined, .icon-btn) {
+      cursor: pointer;
+      background-color: black;
+      color: white !important; 
+    }
+    &:active:not(.underlined, .icon-btn) {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.77);
+      color: white !important;
+    }
+    &.underlined:active {
+      text-decoration: underline !important;
+    }
+    &.icon-btn {
+      background-color: white !important;
+      color: black !important;
+      mat-icon {
+        margin: 0;
+      }
+    }
+    background: white !important;
+    color: black !important;
+    width: fit-content;
+}
+
+button {
+    border: var(--main-color-dark) solid 0;
+    border-radius: .8rem;
+    padding: .5rem .8rem;
+    font-weight: bolder;
+    background-color: var(--main-color-light);
+    color: white;
+    &:hover {
+        cursor: pointer;
+        -webkit-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+        -moz-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+        box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+    }
+    &:active {
+        background-color: var(--main-color-dark);
+        color: white;
+        cursor: pointer;
+    }
+}
+
+input {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 1px 16px;
+    color: white;
+    border: solid 0px;
+    background-color: var(--main-color-light);
+    &::placeholder {
+        color: white;
+    }
+    &:focus-visible {
+        outline: none;
+    }
+}

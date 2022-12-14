@@ -1,0 +1,21 @@
+:host {
+    .main-container {
+        .portfolios {
+            .portfolio {
+                overflow: hidden;
+                border-radius: .8rem;
+                background-color: var(--main-color-light);
+                .bg {
+                    .blur { 
+                        background: rgba(151, 151, 151, 0.1); // Make sure this color has an opacity of less than 1
+                        backdrop-filter: blur(4px); // This be the blur
+                    }
+                    
+                }
+                .pic {
+                    background-color: var(--main-color-dark);
+                }
+            }
+        }
+    }
+}

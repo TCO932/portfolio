@@ -1,0 +1,16 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .circle {
+        width: fit-content;
+        height: fit-content;
+        padding: 3rem;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: var(--main-color);
+    }
+    .input {
+        width: 90%;
+    }
+}

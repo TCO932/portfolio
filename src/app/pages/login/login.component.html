@@ -1,0 +1,42 @@
+<div class="login-container flex justify-content-end sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto py-2 my-2 xl:my-4 px-2 h-full">
+    <div class="content">
+        <div class="circle">
+            <div class="form flex align-content-center flex-wrap w-15rem h-15rem lg:w-25rem lg:h-25rem">
+                <form [formGroup]="loginForm" (submit)="logIn()" class="login-form w-full py-4 lg:py-5">
+                    <div class="button-container flex justify-content-center flex-wrap mb-3">
+                        <p class="text-xl lg:text-3xl" >Введите логин и пароль</p>
+                    </div>
+                    <div class="fields ">
+                        <mat-form-field class="w-full block">
+                          <mat-label>Логин</mat-label>
+                          <input class="input" type="email" matInput formControlName="login">
+                          <mat-error *ngIf="loginForm.hasError('email') && !loginForm.hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="loginForm.hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                    
+                        <mat-form-field class="w-full block">
+                          <mat-label>Пароль</mat-label>
+                          <input class="input" type="password" matInput formControlName="password">
+                          <mat-error *ngIf="loginForm.hasError('password') && !loginForm.hasError('required')">
+                            Please enter a valid password
+                          </mat-error>
+                          <mat-error *ngIf="loginForm.hasError('required')">
+                            Password is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="button-container mt-0 flex justify-content-center flex-wrap">
+                        <button class="logIn-button py-2 px-4 lg:py-2 lg:px-5 lg:text-lg" type="submit">Войти</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+        <div class="register flex justify-content-center flex-wrap">
+            <span class="my-2">Еще нет аккаунта? <a href="/registration" >Зарегистрироваться</a> </span>
+        </div>
+    </div>
+</div>

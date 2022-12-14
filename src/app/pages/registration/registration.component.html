@@ -1,0 +1,109 @@
+<div class="login-container flex justify-content-end sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto py-2 my-2 xl:my-4 px-2 h-full">
+    <div class="content">
+        <div class="circle">
+            <div class="form flex align-content-center flex-wrap w-15rem h-15rem lg:w-25rem lg:h-25rem">
+                <form [formGroup]="regForm" (submit)="register()" class="login-form w-full py-4 lg:py-5">
+                    <div *ngIf="step == 1">
+                        <div class="button-container flex justify-content-center flex-wrap">
+                            <p class="text-2xl lg:text-4xl" >Добро пожаловать!</p>
+                        </div>
+                        <div class="button-container flex justify-content-center flex-wrap mb-3">
+                            <p class="text-xl lg:text-3xl my-0" >Укажите свою роль</p>
+                        </div>
+                        <div class="fields ">
+                            <mat-radio-group formControlName="role" class="row" aria-label="Select an option">
+                                <div class="flex justify-content-center">
+                                    <mat-radio-button value="author">Я автор</mat-radio-button>
+                                    <mat-radio-button value="viewer">Я зритель</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+
+                    <div *ngIf="step == 2">
+                        <div class="fields ">
+                            <div class="button-container flex justify-content-center flex-wrap">
+                                <p class="text-xl lg:text-3xl" >Как вас зовут?</p>
+                            </div>
+                            <mat-form-field class="w-full block">
+                              <mat-label>Имя</mat-label>
+                              <input class="input" type="text" matInput formControlName="name">
+                              <mat-error *ngIf="!regForm.hasError('required')">
+                                Please enter a valid email address
+                              </mat-error>
+                              <mat-error *ngIf="regForm.hasError('required')">
+                                Email is <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                        
+                            <div class="button-container flex justify-content-center flex-wrap">
+                                <p class="text-xl lg:text-3xl mt-2" >Укажите дату рождения</p>
+                            </div>
+                            <mat-form-field class="w-full block">
+                                <input matInput readonly [matDatepicker]="picker" formControlName="birthDate">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              <!-- <mat-error *ngIf="regForm.hasError('password') && !regForm.hasError('required')">
+                                Please enter a valid password
+                              </mat-error>
+                              <mat-error *ngIf="regForm.hasError('required')">
+                                Password is <strong>required</strong>
+                              </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div *ngIf="step == 3">
+                        <div class="button-container flex justify-content-center flex-wrap mb">
+                            <p class="text-2xl lg:text-4xl text-center mb-2 lg:mb-3" >Придумайте логин и пароль</p>
+                        </div>
+                        <div class="fields ">
+                            <mat-form-field class="w-full block">
+                              <mat-label>Логин</mat-label>
+                              <input class="input h-3rem" type="text" matInput formControlName="login">
+                              <mat-error *ngIf="regForm.hasError('email') && !regForm.hasError('required')">
+                                Please enter a valid email address
+                              </mat-error>
+                              <mat-error *ngIf="regForm.hasError('required')">
+                                Email is <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                        
+                            <mat-form-field class="w-full block">
+                              <mat-label>Пароль</mat-label>
+                              <input class="input h-3rem" type="password" matInput formControlName="password">
+                              <mat-error *ngIf="regForm.hasError('password') && !regForm.hasError('required')">
+                                Please enter a valid password
+                              </mat-error>
+                              <mat-error *ngIf="regForm.hasError('required')">
+                                Password is <strong>required</strong>
+                              </mat-error>
+                            </mat-form-field>
+                            
+                            <mat-form-field class="w-full block">
+                                <mat-label>Подтверждение пароля</mat-label>
+                                <input class="input h-3rem" type="password" matInput formControlName="passwordSubmit">
+                                <mat-error *ngIf="regForm.hasError('password') && !regForm.hasError('required')">
+                                  Please enter a valid password
+                                </mat-error>
+                                <mat-error *ngIf="regForm.hasError('required')">
+                                  Password is <strong>required</strong>
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div *ngIf="step < 3" class="button-container mt-4 flex justify-content-center flex-wrap">
+                        <button (click)="next()" class="logIn-button py-2 px-4 lg:py-2 lg:px-5 lg:text-lg" type="button">Далее</button>
+                    </div>
+                    <div *ngIf="step == 3" class="button-container mt-1 flex justify-content-center flex-wrap">
+                        <button class="logIn-button py-2 px-4 lg:py-2 lg:px-5 lg:text-lg" type="submit">Регистрация</button>
+                    </div>
+                    <div *ngIf="step == 4" class="button-container mt-4 flex justify-content-center flex-wrap">
+                        <button (click)="goToMain()" class="logIn-button py-2 px-4 lg:py-2 lg:px-5 lg:text-lg" type="button">На главную</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
