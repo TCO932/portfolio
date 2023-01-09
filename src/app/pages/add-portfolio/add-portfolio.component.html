@@ -1,1 +1,50 @@
-<p>add-portfolio works!</p>
+<div class="container sm:col-11 md:col-11 lg:col-10 xl:col-9 mx-auto py-2 my-2 xl:my-4 px-2">
+    <form [formGroup]="portfolioForm" (submit)="save()">
+
+        <div class="flex justify-content-start mb-6">
+            <h1 class="text-transform: uppercase text-center text-xl lg:text-4xl">Создание портфолио</h1>
+        </div>
+        <div class="mb-6 flex">
+            <div class="mb-3 mr-2 w-8">
+                <div class="mb-3">
+                    <h2 class="text-transform: uppercase mb-1">Придумайте название</h2>
+                    <input class="input w-full" type="text" matInput formControlName="name" placeholder="Название">
+                </div>
+                <div>
+                    <h2 class="text-transform: uppercase mb-1">Введите описание</h2>
+                    <textarea formControlName="description" placeholder="Описание" class="description w-full"></textarea>
+                </div>
+            </div>
+            <div class="w-4 flex m-auto justify-content-center">
+                <label *ngIf="!file" class="cursor-pointer blank pic m-2">
+                    <input class="hidden" type="file" (change)="addTitlePic($event)" accept="image/png, image/gif, image/jpeg" >
+                    <mat-icon class="add-icon m-auto" fontIcon="add"></mat-icon>
+                </label>
+                <div *ngIf="file"  class="flex relative m-2">
+                    <img [src]="titlePic.url" class="pic p-0">
+                    <div class="cursor-pointer w-2rem h-2rem delete-icon"> 
+                        <mat-icon (click)="deleteTitle()" class="add-icon m-auto" fontIcon="close"></mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-6">
+            <h2 class="text-transform: uppercase">Загрузка работ (минимум 3)</h2>
+            <div #content class="flex overflow-x-auto">
+                <label class="cursor-pointer blank pic m-2">
+                    <input class="hidden" type="file" (change)="addPics($event)" accept="image/png, image/gif, image/jpeg" >
+                    <mat-icon class="add-icon m-auto" fontIcon="add"></mat-icon>
+                </label>
+                <div *ngFor="let pic of pics" class="flex relative m-2">
+                    <img [src]="pic.url" class="pic p-0">
+                    <div class="cursor-pointer w-2rem h-2rem delete-icon"> 
+                        <mat-icon (click)="deleteFile(pic.id)" class="add-icon m-auto" fontIcon="close"></mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-content-center mb-6">
+            <button class="text-transform: uppercase p-3" type="submit">Опубликовать</button>
+        </div>
+    </form>
+</div>

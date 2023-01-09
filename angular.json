@@ -30,9 +30,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "src/assets/font/stylesheet.css",
-              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "node_modules/primeng/resources/themes/md-light-deeppurple/theme.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           },

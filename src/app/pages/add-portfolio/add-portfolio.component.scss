@@ -1,0 +1,52 @@
+:host {
+    .input {
+        height: 2.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        padding: 1px 16px;
+    }
+
+    .description {
+        background-color: var(--main-color-light);
+        font-size: 1rem;
+        border: none !important;
+        border-radius: 8px;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        min-height: 8rem;
+        resize: none;
+        &:focus-visible {
+            outline: none !important;
+        }
+    }
+
+    .blank {
+        background-color: var(--main-color-light);
+    }
+
+    .pic {
+        width: 15rem !important;
+        height: 15rem !important;
+        .add-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 15rem;
+            height: 15rem;
+        }
+    }
+
+    .delete-icon {
+        background-color: rgba(0, 0, 0, 0.404);
+        position: absolute;
+        right: 0;
+        mat-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}

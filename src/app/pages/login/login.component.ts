@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,19 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-
+    private authServise: AuthService,
   ) {
-
+    authServise.auth.subscribe(res => {
+      if (res == true) {
+        this.router.navigate(['main']);
+      }
+    });
+    authServise.checkAuth();
   }
 
   logIn() {
-    // вход
+    const controls = this.loginForm.controls;
+    this.authServise.login(controls.login.value!, controls.password.value!);
   }
 
   goToReg() {

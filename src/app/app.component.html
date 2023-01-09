@@ -4,7 +4,13 @@
       <p class="m-0 flex align-items-center cursor-pointer" (click)="navigate('main')">Портфолио</p>
       <input class="input ml-3" type="text" spellcheck="false" matInput placeholder="Поиск">
       <div class="spacer flex-grow-1"></div>
-      <button class="login-button" *ngIf="!isLogedIn" (click)="navigate('login')">Войти</button>
+      <button class="" *ngIf="!isLogedIn" (click)="navigate('login')">Войти</button>
+      <div *ngIf="isLogedIn">
+        <button type="button" pButton [label]="user?.full_name ?? ''" (click)="menu.toggle($event)"></button>
+        <p-menu #menu [popup]="true" [model]="options"></p-menu>
+      </div>
+      <!-- <button class="" *ngIf="isLogedIn" (click)="navigate('add-portfolio')">Выйти</button> -->
+      <!-- <button class="" *ngIf="isLogedIn" (click)="logout()">Выйти</button> -->
     </div>
   </div>
   <div class="view-body">

@@ -10,7 +10,31 @@
         overflow: hidden;
         background-color: var(--main-color);
     }
-    .input {
-        width: 90%;
+    .button-container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
+}
+
+::ng-deep .p-inputtext {
+  border-radius: 8px;
+  height: 2rem;
+  font-size: 1rem;
+  box-shadow: none !important;
+  padding: 1px 16px;
+  color: white;
+  border: solid 0px !important;
+  background-color: var(--main-color-light);
+  &::placeholder {
+    color: white;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+::ng-deep .p-calendar {
+    color: var(--main-color) !important;
 }

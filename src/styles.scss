@@ -2,79 +2,177 @@
 @use '@angular/material' as mat;
 @import './assets/font/stylesheet.css';
 
+@include mat.core();
+:root {
+  --main-color: #272643;
+  --main-color-light: #494870;
+  --main-color-dark: #1a1a2c;
+  --main-background-color: #12111fdc;
+}
+
+$primary-palette: (
+ 50: #e8e9ee,
+ 100: #c4c8d7,
+ 200: #9fa5bb,
+ 300: #7c82a0,
+ 400: #62688d,
+ 500: #494f7c,
+ 600: #434873,
+ 700: #3b3f68,
+ 800: #33355b,
+ 900: #272643,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   // ... continues to 900
+ )
+);
+
+$accent-palette: (
+ 50: #eaebf0,
+ 100: #caccda,
+ 200: #a8abc1,
+ 300: #888ba7,
+ 400: #6f7295,
+ 500: #595a84,
+ 600: #52527c,
+ 700: #494870,
+ 800: #413f63,
+ 900: #332f4a,
+ // ... continues to 900
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   // ... continues to 900
+ )
+);
+
+$primary: mat.define-palette($primary-palette);
+$accent: mat.define-palette($accent-palette);
+
+$theme: mat.define-light-theme((
+ color: (
+    primary: $primary,
+    accent: $accent,
+  ),
+  density: 0,
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($theme);
+
 html, body { height: 100%; }
 body { margin: 0; }
 
-* {
-    font-family: 'Gilroy';
-    color: white;
+*:not(mat-icon) {
+  font-family: 'Gilroy' !important;
+  color: white;
 }
 
-:root {
-    --main-color: #272643;
-    --main-color-light: #494870;
-    --main-color-dark: #1a1a2c;
-    --main-background-color: #12111fdc;
-}
 
 
 .mdc-button {
-    &:hover:not(.underlined, .icon-btn) {
-      cursor: pointer;
-      background-color: black;
-      color: white !important; 
-    }
-    &:active:not(.underlined, .icon-btn) {
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, 0.77);
-      color: white !important;
-    }
-    &.underlined:active {
-      text-decoration: underline !important;
-    }
-    &.icon-btn {
-      background-color: white !important;
-      color: black !important;
-      mat-icon {
-        margin: 0;
-      }
-    }
-    background: white !important;
+  &:hover:not(.underlined, .icon-btn) {
+    cursor: pointer;
+    background-color: black;
+    color: white !important; 
+  }
+  &:active:not(.underlined, .icon-btn) {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.77);
+    color: white !important;
+  }
+  &.underlined:active {
+    text-decoration: underline !important;
+  }
+  &.icon-btn {
+    background-color: white !important;
     color: black !important;
-    width: fit-content;
+    mat-icon {
+      margin: 0;
+    }
+  }
+  background: white !important;
+  color: black !important;
+  width: fit-content;
 }
 
 button {
-    border: var(--main-color-dark) solid 0;
-    border-radius: .8rem;
-    padding: .5rem .8rem;
-    font-weight: bolder;
-    background-color: var(--main-color-light);
+  border: var(--main-color-dark) solid 0;
+  border-radius: .8rem;
+  padding: .5rem .8rem;
+  font-weight: bolder;
+  background-color: var(--main-color-light);
+  color: white;
+  &:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+    -moz-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+    box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+  }
+  &:active {
+    background-color: var(--main-color-dark);
     color: white;
-    &:hover {
-        cursor: pointer;
-        -webkit-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
-        -moz-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
-        box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
-    }
-    &:active {
-        background-color: var(--main-color-dark);
-        color: white;
-        cursor: pointer;
-    }
+    cursor: pointer;
+  }
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--main-color) var(--main-color-light);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--main-color-light);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 10px;
+  border: 1px solid var(--main-color-light);
+}
+
+.p-menu.p-menu-overlay {
+  border: var(--main-color) solid 0 !important;
+  border-radius: .8rem !important;
+  background-color: var(--main-color-light) !important;
+}
+
+.p-menuitem-text {
+  color: white !important;
 }
 
 input {
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 1px 16px;
-    color: white;
-    border: solid 0px;
-    background-color: var(--main-color-light);
-    &::placeholder {
-        color: white;
-    }
-    &:focus-visible {
-        outline: none;
-    }
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 1px 16px;
+  color: white;
+  border: solid 0px;
+  background-color: var(--main-color-light);
+  &::placeholder {
+    color: rgba($color: white, $alpha: 0.3);
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+input[type=radio] {
+  accent-color: var(--main-color-light);
+}
+
+textarea {
+  &::placeholder {
+    color: rgba($color: white, $alpha: 0.3);
+  }
 }

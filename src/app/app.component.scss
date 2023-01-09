@@ -4,7 +4,7 @@
         .header {
             color: white;
             min-height: 100px;
-            background-color: #272643;
+            background-color: var(--main-color);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -22,8 +22,32 @@
         }
         .footer {
             min-height: 100px;
-            background-color: #272643;
+            background-color: var(--main-color);
         }
+    }
+}
+
+button {
+    border: var(--main-color-dark) solid 0;
+    border-radius: .8rem;
+    padding: .5rem .8rem;
+    font-weight: bolder;
+    background-color: var(--main-color-light);
+    color: white;
+    &:focus {
+        background-color: var(--main-color-light) !important;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: var(--main-color-light) !important;
+        -webkit-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+        -moz-box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+        box-shadow: 0px 5px 10px -5px var(--main-color-dark) inset;
+    }
+    &:active {
+        background-color: var(--main-color-dark) !important;
+        color: white;
+        cursor: pointer;
     }
 }
 
