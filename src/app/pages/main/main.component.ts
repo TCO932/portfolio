@@ -64,11 +64,30 @@ export class MainComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.getPortfolios();
+  }
+
+  getPortfolios() {
     this.portfoliosService.getPortfolios().subscribe(res => {
       if (res.result == 'ok') {
         this.portfolios = res.data;
       }
     });
+  }
+
+  searchPortfolio(name: string) {
+    if (name) {
+      this.portfoliosService.getPortfolioByName(name).subscribe(
+        res => {
+          if (res.result == 'ok') {
+            this.portfolios = res.data;
+            console.log(res);
+          }
+        }
+      )
+    } else {
+      this.getPortfolios();
+    }
   }
 
   goToDetails(id: string) {

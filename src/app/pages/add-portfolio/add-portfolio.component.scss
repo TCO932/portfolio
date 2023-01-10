@@ -37,6 +37,12 @@
         }
     }
 
+    img.pic {
+        margin: auto;
+        background-size: cover;
+        object-fit: cover;
+    }
+
     .delete-icon {
         background-color: rgba(0, 0, 0, 0.404);
         position: absolute;

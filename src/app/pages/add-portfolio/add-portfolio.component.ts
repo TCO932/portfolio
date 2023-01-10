@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PortfoliosService } from 'src/app/services/portfolios.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class AddPortfolioComponent {
   public titlePic: any;
 
   constructor(
+    private router: Router,
     private portfoliosService: PortfoliosService,
   ) {
     
@@ -54,7 +56,9 @@ export class AddPortfolioComponent {
     const controls = this.portfolioForm.controls;
     this.portfoliosService.addPortfolio(controls.name.value!, controls.description.value!, (new Date()).toString(), this.file!, this.files).subscribe(
       (res: any) => {
-        console.log(res)
+        if (res.body.result == 'ok') {
+          this.router.navigate([`portfolio/${res.body.data}`]);
+        }
       }
     )
   }

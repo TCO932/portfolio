@@ -47,6 +47,28 @@ export class PortfolioComponent implements OnInit {
     console.log(this.author?.user_id)
   }
 
+  sendComment(comment: string) {
+    this.portfoliosService.sendComment(this.portfolio?.portfolio_id ?? '', comment).subscribe(res => {
+      if (res.result == 'ok') {
+        this.portfoliosService.getComments(this.portfolio?.portfolio_id ?? '').subscribe((res) => {
+          this.comments = res.data;
+          console.log('comment sent');
+        });
+      }
+    });
+  }
+
+  deleteComment(comment: string) {
+    this.portfoliosService.deleteComment(this.author!.login, comment).subscribe(res => {
+      if (res.result == 'ok') {
+        this.portfoliosService.getComments(this.portfolio?.portfolio_id ?? '').subscribe((res) => {
+          this.comments = res.data;
+          console.log('comment deleted');
+        });
+      }
+    });
+  }
+
   deletePortfolio(id: string) {
     this.portfoliosService.deletePortfolio(id);
     this.router.navigate(['add-portfolio']);

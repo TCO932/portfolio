@@ -39,20 +39,34 @@
             <div #content class="grid">
                 <div #picContainer *ngFor="let pic of pics" class="col-3"  [style.height.px]="picContainer.offsetWidth">
                     <img [src]="'https://Project.pavielurakov1.repl.co/image.php?folder=images&id=' + pic.image" class="pic h-full w-full p-0">
-                    <!-- <div class="pic bg-orange-500 h-full w-full"></div> -->
                 </div>
             </div>
         </div>
         <mat-divider class="my-6"></mat-divider>
+        <div *ngIf="true" class="add-comment">
+            <h2 class="text-xl lg:text-4xl" style="margin-bottom: 0.2rem;">Добавить комментарий</h2>
+            <textarea #comment class="text"></textarea>
+            <div class="button-container">
+                <button (click)="sendComment(comment.value); comment.value = ''" class="text-button" >Отправить</button>
+            </div>
+        </div>
         <div *ngIf="comments?.length" class="comments">
             <h2 class="text-xl lg:text-4xl" style="margin-bottom: 0.2rem;">Все комментарии</h2>
             <mat-divider></mat-divider>
             <div class="commnets-container sm:col-11 md:col-11 lg:col-10 xl:col-10 mx-auto px-2">
                 <div *ngFor="let comment of comments">
                     <div class="comment">
-                        <span>{{comment.creator_name}}</span><br>  
+                        <div class="flex justify-content-between">
+                            <span>{{comment.login}}</span> 
+                            <div *ngIf="portfolio">
+                                <span *ngIf="author?.role == 'admin' || portfolio?.user_id == author?.user_id">
+                                    <span class="cursor-pointer underline" (click)="deleteComment(comment.comment)"
+                                    >Удалить</span>
+                                </span>
+                            </div>
+                        </div>
                         <div class="comment-text">
-                            {{comment.text}}
+                            {{comment.comment}}
                         </div> 
                     </div>
                 </div>

@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import {CalendarModule} from 'primeng/calendar';
 import {MenuModule} from 'primeng/menu';
+import {ImageModule} from 'primeng/image';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     CalendarModule,
     MenuModule,
+    ImageModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,

@@ -28,6 +28,13 @@ export class PortfoliosService {
     return this.get(params);
   }
 
+  getPortfolioByName(name: string) {
+    let params = new HttpParams()
+      .append('method', 'getPortfolioByName')
+      .append('name', name);
+    return this.get(params);
+  }
+
   getUser(userId: string) {
     let params = new HttpParams()
       .append('method', 'getUserById')
@@ -40,6 +47,26 @@ export class PortfoliosService {
       .append('method', 'getComments')
       .append('portfolio_id', portfolioId);
     return this.get(params);
+  }
+
+  sendComment(portfolio_id: string, comment: string) {
+    const body = {
+      'method': 'sendComment',
+      'portfolio_id': portfolio_id,
+      'comment': comment,
+      'token': this.authServise.getToken()!,
+    }
+    return this.post(body);
+  }
+
+  deleteComment(login: string, comment: string) {
+    const body = {
+      'method': 'deleteComment',
+      'login': login,
+      'comment': comment,
+      'token': this.authServise.getToken()!,
+    }
+    return this.post(body);
   }
 
   getImages(portfolioId: string) {

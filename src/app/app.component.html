@@ -2,7 +2,6 @@
   <div class="header lg:text-2xl md:text-xl">
     <div class="header-row flex flex-row align-content-center p-3 lg:p-4 h-full">
       <p class="m-0 flex align-items-center cursor-pointer" (click)="navigate('main')">Портфолио</p>
-      <input class="input ml-3" type="text" spellcheck="false" matInput placeholder="Поиск">
       <div class="spacer flex-grow-1"></div>
       <button class="" *ngIf="!isLogedIn" (click)="navigate('login')">Войти</button>
       <div *ngIf="isLogedIn">

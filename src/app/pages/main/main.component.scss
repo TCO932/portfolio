@@ -1,5 +1,24 @@
 :host {
+    .mdc-button {
+        &.icon-btn {
+            background-color: white !important;
+            color: black !important;
+            mat-icon {
+                margin: auto;
+            }
+        }
+    }
     .main-container {
+        .search {
+            .bar {
+              button {
+                height: calc(2.5rem);
+                width: calc(2.5rem);
+                padding: 0;
+                cursor: pointer;
+              }
+            }
+        }
         .portfolios {
             .portfolio {
                 overflow: hidden;

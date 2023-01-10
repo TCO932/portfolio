@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { ProfileService } from './services/profile.service';
 import { User } from './data';
+import { PortfoliosService } from './services/portfolios.service';
 
 @Component({
   selector: 'app-root',
@@ -41,8 +42,8 @@ export class AppComponent {
   constructor (
     private router: Router,
     private authServise: AuthService,
-    private matIconRegistry: MatIconRegistry,
     private profileService: ProfileService, 
+    private portfoliosService: PortfoliosService,
     ) {
     profileService.user.subscribe(res => {
       this.user = res;
